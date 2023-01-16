@@ -5,16 +5,17 @@ use datafusion::prelude::*;
 async fn main() -> Result<()> {
 
     let context = SessionContext::new();
-    let test_data = datafusion::test_util::parquet_test_data();
+    //let test_data = datafusion::test_util::parquet_test_data();
+    let test_data = "/mnt/c/Dev/Rust/archive";
 
     context.register_parquet(
-        "alltypes_plain",
-        &format!("{test_data}/alltypes_plain.parquet"),
+        "patient",
+        &format!("{test_data}/Patient.parquet"),
         ParquetReadOptions::default(),
     ).await?;
 
     let df = context.sql(
-        "select * from alltypes_plain"
+        "select * from patient"
     ).await?;
 
     df.show().await?;
