@@ -14,7 +14,7 @@ async fn main() -> Result<()> {
     ).await?;
 
     let df = context.sql(
-        "select store, brand, week, logmove from oj_data limit 10"
+        "explain select store, brand, week, logmove from oj_data limit 10"
     ).await?;
 
     df.show().await?;
