@@ -15,7 +15,7 @@ async fn main() -> Result<()> {
     ).await?;
 
     let df = context.sql(
-        "select * from patient"
+        "explain select * from patient"
     ).await?;
 
     df.show().await?;
